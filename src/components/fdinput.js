@@ -21,7 +21,6 @@ function Fdinput(props) {
   useEffect(() => {
     let k = props.id+props.side
     if(window.localStorage.getItem(k)){
-      console.warn("data",JSON.parse(localStorage.getItem(k)));
       setValues((val) => JSON.parse(localStorage.getItem(k)));
     }
   }, [props.id,props.side]);
@@ -41,15 +40,10 @@ function Fdinput(props) {
       return k;
     });
   }
-  // if(props.already_given.length!==0){
-  //   setValues((val)=>{
-  //     return [...props.already_given]
-  //   })
-  // }
+
   const handleAddChip = (_, newValue) => {
     if (newValue && !values.includes(newValue)) {
       setValues((pval) => [...pval, newValue]);
-      console.log("will call the function");
     }
   };
 

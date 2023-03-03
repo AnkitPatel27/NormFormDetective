@@ -1,3 +1,0 @@
-const Formatinput = (inputstr) => {
-    
-}

@@ -16,7 +16,6 @@ function Attrinput(props) {
         if(inputvalue.length !== 0){
             props.datafrominput(inputvalue)
         }
-        // console.log("Input Value: ", inputvalue );
         inputRef.current.children[1].children[0].value= "";
       }
     };

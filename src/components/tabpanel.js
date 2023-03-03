@@ -49,9 +49,9 @@ const TabPanel = (props) => {
                     >
                       Edge {index + 1}
                     </h1>
-                    <div class="innerarrow">
+                    <div className="innerarrow">
                       <div> &#123; {value.left.join(", ")} &#125;</div>
-                      <span class="material-symbols-outlined icon">
+                      <span className="material-symbols-outlined icon">
                         arrow_right_alt
                       </span>
                       <div> &#123; {value.right.join(", ")} &#125;</div>
@@ -106,7 +106,7 @@ const TabPanel = (props) => {
                   2nd Normal Form{" "}
                   {data["2NF"][0] ? (
                     <span
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                       style={{
                         color: "green",
                         transform: "scale(1.5)",
@@ -117,7 +117,7 @@ const TabPanel = (props) => {
                     </span>
                   ) : (
                     <span
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                       style={{
                         color: "red",
                         transform: "scale(1.5)",
@@ -134,7 +134,7 @@ const TabPanel = (props) => {
                   3rd Normal Form{" "}
                   {data["3NF"][0] ? (
                     <span
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                       style={{
                         color: "green",
                         transform: "scale(1.5)",
@@ -145,7 +145,7 @@ const TabPanel = (props) => {
                     </span>
                   ) : (
                     <span
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                       style={{
                         color: "red",
                         transform: "scale(1.5)",
@@ -162,7 +162,7 @@ const TabPanel = (props) => {
                   BCNF Normal Form{" "}
                   {data["BCNF"][0] ? (
                     <span
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                       style={{
                         color: "green",
                         transform: "scale(1.5)",
@@ -173,7 +173,7 @@ const TabPanel = (props) => {
                     </span>
                   ) : (
                     <span
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                       style={{
                         color: "red",
                         transform: "scale(1.5)",
@@ -227,9 +227,9 @@ const TabPanel = (props) => {
                     </div>
                     {value.fds.map((val, ind) => {
                       return (
-                        <div class="innerarrow">
+                        <div className="innerarrow">
                           <div> &#123; {val.left.join(", ")} &#125;</div>
-                          <span class="material-symbols-outlined icon">
+                          <span className="material-symbols-outlined icon">
                             arrow_right_alt
                           </span>
                           <div> &#123; {val.right.join(", ")} &#125;</div>
@@ -249,14 +249,11 @@ const TabPanel = (props) => {
       return g;
     }
   };
-  // console.log("TabsPanel",props.Fds)
+
 
   useEffect(() => {
     function GetDataForGivenForm() {
-      // console.warn(
-      //   "Data send",
-      //   props.Fds.map((item) => item.lhs)
-      // );
+
       const leftk = props.Fds.map((item) => item.lhs);
       const rightk = props.Fds.map((item) => item.rhs);
       const diff = rightk.map((x, index) =>
@@ -272,8 +269,6 @@ const TabPanel = (props) => {
           },
         })
         .then((res) => {
-          console.log("Answer Answer", res.data.data.queryResult);
-          // console.log("Answer Answer",res.data.data.queryResult.minimal_cover);
           setreqData(res.data.data.queryResult);
         })
         .catch((err) => {});

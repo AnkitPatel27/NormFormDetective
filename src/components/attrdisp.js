@@ -3,9 +3,7 @@ import { Stack } from "@mui/system";
 import { Chip } from "@mui/material";
 
 function Attrdisp(props) {
-  // const [chips,setchips] = useState();
   const handleDelete = () => {
-        // console.log(props.label)
         props.delete_attr(props.label)
   }
   return (

@@ -23,16 +23,12 @@ function App() {
   const [uid_fd, setuid_fd] = useState([uid()]);
   const [attributes, setattributes] = useState(new Set());
   const [tabvalue, set_tabvalue] = useState(0);
-  console.log("********************************PPPP", attributes);
-  console.log("uid_fd", uid_fd);
-  console.log("Fds", Fds);
   const datafrominput = (value) => {
     setattributes((pattributes) => {
       let k = new Set(pattributes);
       k.add(value);
       return k;
     });
-    // console.log("attr", attributes);
   };
 
   const delete_attr = (chipval) => {
@@ -54,8 +50,6 @@ function App() {
   };
 
   const delete_fd = (event) => {
-    console.log("event", event);
-    // setn_fd((prev) => prev - 1);
 
     setuid_fd((prev) => {
       let k = [...prev];
@@ -75,14 +69,12 @@ function App() {
   };
 
   const take_fd_data = (side, id, data) => {
-    console.log("Date came", side, id, data);
     let index = Fds.findIndex((val) => {
       if (val["uid"] === id) {
         return true;
       }
       return false;
     });
-    console.log(Fds, index);
     if (index === -1 && data.length !== 0) {
       Fds = [...Fds, { uid: id }];
       index = Fds.length - 1;
@@ -93,7 +85,6 @@ function App() {
     if (side === "R" && index !== -1) {
       Fds[index]["rhs"] = [...data];
     }
-    console.log("Fds up", Fds);
   };
 
   const handleClickbutton = () => {
@@ -127,7 +118,6 @@ function App() {
           <ThemeProvider theme={darkTheme}>
             <Stack>
               <Tabs
-                centered
                 value={tabvalue}
                 onChange={handleTabChange}
                 variant="scrollable"
@@ -144,7 +134,7 @@ function App() {
                 <Tab sx={{ minWidth: "150px" }} label="3rd NF" />
                 <Tab sx={{ minWidth: "150px" }} label="BCNF" />
               </Tabs>
-              <TabPanel className="Tabspanel" value={tabvalue} index={0}>
+              <TabPanel key={15464564} className="Tabspanel" value={tabvalue} index={0}>
                 <div className="attr_input">
                   <h1>Add Attributes</h1>
                   <Attrinput datafrominput={datafrominput} />
@@ -164,7 +154,7 @@ function App() {
                   <h1>
                     Functional Dependencies
                     <span
-                      class="material-symbols-outlined icon add"
+                      className="material-symbols-outlined icon add"
                       onClick={inc_n_fd}
                     >
                       add_circle
@@ -187,7 +177,7 @@ function App() {
                           passData={take_fd_data}
                           start={1}
                         ></Fdinput>
-                        <span class="material-symbols-outlined icon">
+                        <span className="material-symbols-outlined icon">
                           arrow_right_alt
                         </span>
                         <Fdinput
@@ -198,7 +188,7 @@ function App() {
                           start={0}
                         ></Fdinput>
                         <span
-                          class="material-symbols-outlined icon delete"
+                          className="material-symbols-outlined icon delete"
                           id={value}
                           onClick={delete_fd}
                         >
@@ -209,7 +199,7 @@ function App() {
                   })}
                 </div>
               </TabPanel>
-              <TabPanel
+              <TabPanel key={21231231} 
                 className="Tabspanel"
                 value={tabvalue}
                 query="Find Minimal Cover/Find 3NF Other Method"
@@ -217,7 +207,7 @@ function App() {
                 Fds={Fds}
                 attributes={attributes}
               ></TabPanel>
-              <TabPanel
+              <TabPanel key={3789789890} 
                 className="Tabspanel"
                 query="Find Candidate Keys"
                 value={tabvalue}
@@ -225,7 +215,7 @@ function App() {
                 Fds={Fds}
                 attributes={attributes}
               ></TabPanel>
-              <TabPanel
+              <TabPanel key={43544365689} 
                 className="Tabspanel"
                 query="Check Normal Form"
                 value={tabvalue}
@@ -233,7 +223,7 @@ function App() {
                 Fds={Fds}
                 attributes={attributes}
               ></TabPanel>
-              <TabPanel
+              <TabPanel key={5647463563} 
                 className="Tabspanel"
                 query="Normalize to 2NF"
                 value={tabvalue}
@@ -242,7 +232,7 @@ function App() {
                 attributes={attributes}
                 datafrom={"NFForm_2"}
               ></TabPanel>
-              <TabPanel
+              <TabPanel key={6735564645} 
                 className="Tabspanel"
                 query="Normalize to 3NF"
                 value={tabvalue}
@@ -251,7 +241,7 @@ function App() {
                 attributes={attributes}
                 datafrom={"NFForm_3"}
               ></TabPanel>
-              <TabPanel
+              <TabPanel key={74567362727} 
                 className="Tabspanel"
                 query="Normalize to BCNF"
                 value={tabvalue}
