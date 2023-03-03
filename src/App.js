@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css_modules/app.css";
 import image_h from "./images/Group.png";
-import Button from "./components/button";
+import "./css_modules/button.css"
 import Attrinput from "./components/attrinput";
 import Attrdisp from "./components/attrdisp";
 import Fdinput from "./components/fdinput";
@@ -111,7 +111,7 @@ function App() {
           <br></br>
           <span id="header_2">Let us determine the form for you!</span>
         </div>
-        <img src={image_h} alt="Image Not Found" className="image_h" />
+        <img src={image_h} alt="" className="image_h" />
         <div className="header_subtext">
           <div id="hs1_1">
             Take control of your database's organization -<br /> Enter your
@@ -172,12 +172,12 @@ function App() {
                   </h1>
 
                   {uid_fd.map((value, index) => {
-                    let indfds = Fds.findIndex((val) => {
-                      if (val["uid"] === value) {
-                        return true;
-                      }
-                      return false;
-                    });
+                    // let indfds = Fds.findIndex((val) => {
+                    //   if (val["uid"] === value) {
+                    //     return true;
+                    //   }
+                    //   return false;
+                    // });
                     return (
                       <div key={value} className="fdinput_disp">
                         <Fdinput

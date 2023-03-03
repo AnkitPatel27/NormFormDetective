@@ -39,24 +39,23 @@ const TabPanel = (props) => {
             {data.map((value, index) => {
               return (
                 <>
-                  
                   <div className="answervis">
-                  <h1
-                    style={{
-                      fontSize: "x-large",
-                      fontFamily: "sans-serif",
-                      margin: "10px",
-                    }}
-                  >
-                    Edge {index + 1}
-                  </h1> 
+                    <h1
+                      style={{
+                        fontSize: "x-large",
+                        fontFamily: "sans-serif",
+                        margin: "10px",
+                      }}
+                    >
+                      Edge {index + 1}
+                    </h1>
                     <div class="innerarrow">
-                          <div> &#123; {value.left.join(", ")} &#125;</div>
-                          <span class="material-symbols-outlined icon">
-                            arrow_right_alt
-                          </span>
-                          <div> &#123; {value.right.join(", ")} &#125;</div>
-                        </div>
+                      <div> &#123; {value.left.join(", ")} &#125;</div>
+                      <span class="material-symbols-outlined icon">
+                        arrow_right_alt
+                      </span>
+                      <div> &#123; {value.right.join(", ")} &#125;</div>
+                    </div>
                   </div>
                 </>
               );
@@ -81,7 +80,7 @@ const TabPanel = (props) => {
                     <div style={{ fontSize: "large", margin: "15px" }}>
                       {index + 1}&#93; Candidate key
                     </div>
-                    <div style={{ fontSize: "medium" ,marginBottom:"10px"}}>
+                    <div style={{ fontSize: "medium", marginBottom: "10px" }}>
                       &#123; {value.join(", ")} &#125;
                     </div>
                   </div>
@@ -251,36 +250,39 @@ const TabPanel = (props) => {
     }
   };
   // console.log("TabsPanel",props.Fds)
-  function GetDataForGivenForm() {
-    // console.warn(
-    //   "Data send",
-    //   props.Fds.map((item) => item.lhs)
-    // );
-    const leftk = props.Fds.map((item) => item.lhs)
-    const rightk = props.Fds.map((item) => item.rhs)
-    const diff = rightk.map((x,index) => x.filter((val)=>!leftk[index].includes(val)));
-    axios
-      .post("http://52.149.136.51:8000/api/v1/", {
-        data: {
-          query: props.query,
-          attributes: Array.from(props.attributes),
-          left: leftk,
-          right: diff
-        },
-      })
-      .then((res) => {
-        console.log("Answer Answer", res.data.data.queryResult);
-        // console.log("Answer Answer",res.data.data.queryResult.minimal_cover);
-        setreqData(res.data.data.queryResult);
-      })
-      .catch((err) => {});
-  }
+
   useEffect(() => {
+    function GetDataForGivenForm() {
+      // console.warn(
+      //   "Data send",
+      //   props.Fds.map((item) => item.lhs)
+      // );
+      const leftk = props.Fds.map((item) => item.lhs);
+      const rightk = props.Fds.map((item) => item.rhs);
+      const diff = rightk.map((x, index) =>
+        x.filter((val) => !leftk[index].includes(val))
+      );
+      axios
+        .post("http://52.149.136.51:8000/api/v1/", {
+          data: {
+            query: props.query,
+            attributes: Array.from(props.attributes),
+            left: leftk,
+            right: diff,
+          },
+        })
+        .then((res) => {
+          console.log("Answer Answer", res.data.data.queryResult);
+          // console.log("Answer Answer",res.data.data.queryResult.minimal_cover);
+          setreqData(res.data.data.queryResult);
+        })
+        .catch((err) => {});
+    }
     if (props.index !== 0 && props.value === props.index) {
       setreqData(null);
       GetDataForGivenForm();
     }
-  }, [props.value]);
+  }, [props]);
 
   if (props.index === 0 && props.value === props.index) {
     return children;

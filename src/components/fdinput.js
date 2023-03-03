@@ -16,7 +16,7 @@ function Fdinput(props) {
   const options = props.options;
   useEffect(() => {
     props.passData(props.side, props.id, [...values]);
-  }, [values]);
+  }, [values,props]);
 
   useEffect(() => {
     let k = props.id+props.side
@@ -24,15 +24,14 @@ function Fdinput(props) {
       console.warn("data",JSON.parse(localStorage.getItem(k)));
       setValues((val) => JSON.parse(localStorage.getItem(k)));
     }
-  }, []);
+  }, [props.id,props.side]);
 
   useEffect(() => {
     let k = props.id+props.side
     if(values.length!==0){
       window.localStorage.setItem(k,JSON.stringify(values));
     }
-  }, [values]);
-  console.log("values", values);
+  }, [values,props.id,props.side]);
   
 
   if (options.val !== 0 && values.length!==0 && !values.every((val) => options.includes(val))) {

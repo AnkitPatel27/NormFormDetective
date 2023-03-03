@@ -1,7 +1,6 @@
 import React from "react";
 import { Stack } from "@mui/system";
 import { Chip } from "@mui/material";
-import { useState } from "react";
 
 function Attrdisp(props) {
   // const [chips,setchips] = useState();
