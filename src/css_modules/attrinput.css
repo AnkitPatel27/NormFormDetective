@@ -1,0 +1,12 @@
+.custom_color{
+    color: white;
+}
+.custom_color>fieldset{
+    border-color: white;
+}
+.custom_color>input{
+    color: white;
+}
+.custom_color>label{
+    color: white;
+}

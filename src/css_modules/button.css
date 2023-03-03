@@ -1,0 +1,17 @@
+button{
+    box-sizing: border-box;
+    border-radius: 9px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    margin: 1rem;
+    padding: 1.2rem;
+    font-size: small;
+    letter-spacing: 0.15em;   
+    transition: all 0.3s;
+    background-color: #749c9c;
+}
+button:hover{
+    filter: drop-shadow(4px 3px 5px #363636bb);
+    transform: scale(1.1);
+}
