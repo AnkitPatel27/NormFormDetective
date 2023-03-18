@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./css_modules/app.css";
 import image_h from "./images/Group.png";
-import "./css_modules/button.css"
+import "./css_modules/button.css";
 import Attrinput from "./components/attrinput";
 import Attrdisp from "./components/attrdisp";
 import Fdinput from "./components/fdinput";
 import { uid } from "uid";
 import { Stack } from "@mui/system";
-import { Tab, Tabs } from "@mui/material";
+import { Tab, Tabs  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import TabPanel from "./components/tabpanel";
 
@@ -50,7 +50,6 @@ function App() {
   };
 
   const delete_fd = (event) => {
-
     setuid_fd((prev) => {
       let k = [...prev];
       k = k.filter(function (item) {
@@ -110,7 +109,7 @@ function App() {
             normalization!
           </div>
           <div>
-            <button onClick={handleClickbutton}>Scroll to bottom</button>
+            <button className="buttons" onClick={handleClickbutton}>Scroll to bottom</button>
           </div>
         </div>
 
@@ -134,10 +133,19 @@ function App() {
                 <Tab sx={{ minWidth: "150px" }} label="3rd NF" />
                 <Tab sx={{ minWidth: "150px" }} label="BCNF" />
               </Tabs>
-              <TabPanel key={15464564} className="Tabspanel" value={tabvalue} index={0}>
+              <TabPanel
+                key={15464564}
+                className="Tabspanel"
+                value={tabvalue}
+                index={0}
+              >
                 <div className="attr_input">
                   <h1>Add Attributes</h1>
                   <Attrinput datafrominput={datafrominput} />
+                  {/* <Button variant="contained" color="success" disableElevation>
+                    Add Attribute
+                  </Button> */}
+                 
                 </div>
                 <div className="attr_disp">
                   {[...attributes].map((value) => {
@@ -199,7 +207,8 @@ function App() {
                   })}
                 </div>
               </TabPanel>
-              <TabPanel key={21231231} 
+              <TabPanel
+                key={21231231}
                 className="Tabspanel"
                 value={tabvalue}
                 query="Find Minimal Cover/Find 3NF Other Method"
@@ -207,7 +216,8 @@ function App() {
                 Fds={Fds}
                 attributes={attributes}
               ></TabPanel>
-              <TabPanel key={3789789890} 
+              <TabPanel
+                key={3789789890}
                 className="Tabspanel"
                 query="Find Candidate Keys"
                 value={tabvalue}
@@ -215,7 +225,8 @@ function App() {
                 Fds={Fds}
                 attributes={attributes}
               ></TabPanel>
-              <TabPanel key={43544365689} 
+              <TabPanel
+                key={43544365689}
                 className="Tabspanel"
                 query="Check Normal Form"
                 value={tabvalue}
@@ -223,7 +234,8 @@ function App() {
                 Fds={Fds}
                 attributes={attributes}
               ></TabPanel>
-              <TabPanel key={5647463563} 
+              <TabPanel
+                key={5647463563}
                 className="Tabspanel"
                 query="Normalize to 2NF"
                 value={tabvalue}
@@ -232,7 +244,8 @@ function App() {
                 attributes={attributes}
                 datafrom={"NFForm_2"}
               ></TabPanel>
-              <TabPanel key={6735564645} 
+              <TabPanel
+                key={6735564645}
                 className="Tabspanel"
                 query="Normalize to 3NF"
                 value={tabvalue}
@@ -241,7 +254,8 @@ function App() {
                 attributes={attributes}
                 datafrom={"NFForm_3"}
               ></TabPanel>
-              <TabPanel key={74567362727} 
+              <TabPanel
+                key={74567362727}
                 className="Tabspanel"
                 query="Normalize to BCNF"
                 value={tabvalue}

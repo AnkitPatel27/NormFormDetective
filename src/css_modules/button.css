@@ -1,4 +1,4 @@
-button{
+.buttons{
     box-sizing: border-box;
     border-radius: 9px;
     color: white;
@@ -11,7 +11,7 @@ button{
     transition: all 0.3s;
     background-color: #749c9c;
 }
-button:hover{
+.buttons:hover{
     filter: drop-shadow(4px 3px 5px #363636bb);
     transform: scale(1.1);
 }
