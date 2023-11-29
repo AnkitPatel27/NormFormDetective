@@ -6,24 +6,25 @@ import Box from "@mui/material/Box";
 const TabPanel = (props) => {
   const [reqData, setreqData] = useState(null);
   const { children } = props;
-  const no_data_then = (
-    <>
-      <div className="answervis" style={{ padding: "5px" }}>
-        <h1
-          style={{
-            fontSize: "x-large",
-            fontFamily: "sans-serif",
-            margin: "10px",
-          }}
-        >
-          No Attributes or Edges given
-        </h1>
-        <h3 style={{ fontSize: "large", margin: "15px" }}>
-          Enter any edges or attributes
-        </h3>
-      </div>
-    </>
-  );
+  const no_data_then = ()=> {
+    return  (<>
+        <div className="answervis" style={{ padding: "5px" }}>
+          or  
+          <h1
+            style={{
+              fontSize: "x-large",
+              fontFamily: "sans-serif",
+              margin: "10px",
+            }}
+          >
+            No Attributes or Edges given
+          </h1>
+          <h3 style={{ fontSize: "large", margin: "15px" }}>
+            Enter any edges or attributes
+          </h3>
+        </div>
+      </>)
+  }
   const get_vis = () => {
     if (props.value !== props.index) {
       return ``;
@@ -291,11 +292,14 @@ const TabPanel = (props) => {
           <Box
             sx={{
               display: "flex",
+              flexDirection:"column",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
             <CircularProgress />
+            
+            {no_data_then()}
           </Box>
         )}
       </>

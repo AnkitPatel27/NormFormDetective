@@ -6,10 +6,12 @@ import Attrinput from "./components/attrinput";
 import Attrdisp from "./components/attrdisp";
 import Fdinput from "./components/fdinput";
 import { uid } from "uid";
+import TabPanel from "./components/tabpanel";
+
+//material UI imports
 import { Stack } from "@mui/system";
 import { Tab, Tabs  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import TabPanel from "./components/tabpanel";
 
 const darkTheme = createTheme({
   palette: {
@@ -23,6 +25,7 @@ function App() {
   const [uid_fd, setuid_fd] = useState([uid()]);
   const [attributes, setattributes] = useState(new Set());
   const [tabvalue, set_tabvalue] = useState(0);
+  
   const datafrominput = (value) => {
     setattributes((pattributes) => {
       let k = new Set(pattributes);
@@ -94,7 +97,7 @@ function App() {
   };
 
   return (
-    <>
+    
       <div className="gridContainer">
         <div className="header">
           <span id="header_1">Normalize with ease </span>
@@ -142,10 +145,6 @@ function App() {
                 <div className="attr_input">
                   <h1>Add Attributes</h1>
                   <Attrinput datafrominput={datafrominput} />
-                  {/* <Button variant="contained" color="success" disableElevation>
-                    Add Attribute
-                  </Button> */}
-                 
                 </div>
                 <div className="attr_disp">
                   {[...attributes].map((value) => {
@@ -268,8 +267,7 @@ function App() {
           </ThemeProvider>
         </div>
       </div>
-      {/* <div>Please donot enter same value on both side of functionaldependency this may generate wrong answer</div> */}
-    </>
+    
   );
 }
 export default App;

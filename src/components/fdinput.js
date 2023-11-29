@@ -14,10 +14,14 @@ const darkTheme = createTheme({
 function Fdinput(props) {
   const [values, setValues] = useState([]);
   const options = props.options;
+  
+  // update global FDS in the above component 
   useEffect(() => {
     props.passData(props.side, props.id, [...values]);
   }, [values,props]);
 
+  // when the new attribute is added it causes a re-render in the child component so the input data is lost
+  // which is fetched here from local storage
   useEffect(() => {
     let k = props.id+props.side
     if(window.localStorage.getItem(k)){
@@ -25,6 +29,8 @@ function Fdinput(props) {
     }
   }, [props.id,props.side]);
 
+
+  // update local storage
   useEffect(() => {
     let k = props.id+props.side
     if(values.length!==0){
@@ -42,6 +48,7 @@ function Fdinput(props) {
   }
 
   const handleAddChip = (_, newValue) => {
+    //autocomplete tag of material ui allows only to take a valid option from the list
     if (newValue && !values.includes(newValue)) {
       setValues((pval) => [...pval, newValue]);
     }
